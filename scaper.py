@@ -2,11 +2,15 @@
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, jsonify
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 
-BASE_URL = "https://www.broadcastify.com/listen/top"
-STREAM_URL_PREFIX = "https://broadcastify.cdnstream1.com/"
+load_dotenv()
+
+BASE_URL = os.getenv("BASE_URL")
+STREAM_URL_PREFIX = os.getenv("STREAM_URL_PREFIX")
 
 # Function to scrape Broadcastify
 def scrape_top_feeds():
