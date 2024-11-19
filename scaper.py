@@ -40,9 +40,9 @@ def scrape_top_feeds():
 
         feeds_data.append({
             "listeners": listeners,
-            "feed_name": feed_name,
-            "feed_id": feed_id,
-            "audio_url": audio_url
+            "name": feed_name,
+            "id": feed_id,
+            "url": audio_url
         })
 
     return feeds_data
@@ -61,7 +61,7 @@ def get_feeds():
 def get_feed_audio(feed_id):
     try:
         audio_url = f"{STREAM_URL_PREFIX}{feed_id}"
-        return jsonify({"audio_url": audio_url}), 200
+        return jsonify({"url": audio_url}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
